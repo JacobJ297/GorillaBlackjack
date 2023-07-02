@@ -7,6 +7,7 @@ let hidden;
 let deck;
 let runningCount = 0;
 let canHit = true; //allows the player (you) to draw while yourSum <= 21
+let streak = 0;
 
 window.onload = function () {
   buildDeck();
@@ -89,6 +90,7 @@ function startGame() {
   }
   document.getElementById("your-sum").innerText = yourSum;
   document.getElementById("dealer-sum").innerText = dealerSum;
+  document.getElementById("streak").innerText = streak;
   //Check for blackjack
   if (dealerSum == 21 && yourSum !== 21) {
     canHit = false;
@@ -106,30 +108,31 @@ function startGame() {
 
 function hit() {
   let answer = basicStrategy();
-  console.log(answer);
-  console.log(yourSum);
+  streak += 1;
+
   if (answer !== "hit") {
     window.alert("Incorrect you should  " + answer);
+    streak = 0;
   }
   newHand();
   startGame();
 }
 function split() {
   let answer = basicStrategy();
-  console.log(answer);
-  console.log(yourSum);
+  streak += 1;
   if (answer !== "split") {
     window.alert("Incorrect you should  " + answer);
+    streak = 0;
   }
   newHand();
   startGame();
 }
 function double() {
   let answer = basicStrategy();
-  console.log(answer);
-  console.log(yourSum);
+  streak += 1;
   if (answer !== "double") {
     window.alert("Incorrect you should  " + answer);
+    streak = 0;
   }
   newHand();
   startGame();
@@ -137,10 +140,10 @@ function double() {
 
 function stand() {
   let answer = basicStrategy();
-  console.log(answer);
-  console.log(yourSum);
+  streak += 1;
   if (answer !== "stand") {
     window.alert("Incorrect you should  " + answer);
+    streak = 0;
   }
   newHand();
   startGame();
