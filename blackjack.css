@@ -4,7 +4,7 @@ body {
   text-align: center;
   color: white;
   text-shadow: 2px 5px 12px rgba(0, 0, 0, 0.55);
-  font-size: 15px;
+  font-size: 13px;
 }
 @keyframes myanimation {
   from {
