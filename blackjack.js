@@ -107,17 +107,11 @@ function startGame() {
   document.getElementById("percentage").innerText = percentage;
 
   //Check for blackjack
-  if (dealerSum == 21 && yourSum !== 21) {
-    canHit = false;
-    document.getElementById("results").innerText = "Dealer blackjack, you lose";
+  if (dealerSum == 21 || yourSum == 21) {
+    newHand();
+    startGame();
   }
-  if (yourSum == 21 && dealerSum !== 21) {
-    canHit = false;
-  }
-  if (yourSum == 21 && dealerSum == 21) {
-    canHit = false;
-    document.getElementById("results").innerText = "Push";
-  }
+
   //buttons
 }
 
@@ -182,7 +176,7 @@ function wait() {
   let answer = basicStrategy();
   streak += 1;
 
-  if (answer !== "hit") {
+  if (answer !== "wait") {
     window.alert("Incorrect you should  " + answer);
     streak = 0;
   } else {
@@ -296,14 +290,14 @@ function basicStrategy() {
         11: "hit",
       },
       10: {
-        2: "hit",
-        3: "hit",
-        4: "hit",
-        5: "hit",
-        6: "hit",
-        7: "hit",
-        8: "hit",
-        9: "hit",
+        2: "double",
+        3: "double",
+        4: "double",
+        5: "double",
+        6: "double",
+        7: "double",
+        8: "double",
+        9: "double",
         10: "hit",
         11: "hit",
       },
