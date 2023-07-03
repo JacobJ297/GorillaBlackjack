@@ -94,6 +94,7 @@ function startGame() {
     yourAceCount += checkAce(card);
     document.getElementById("your-cards").append(cardImg);
   }
+  yourSum = reduceAce(yourSum, yourAceCount);
   console.log(playercards);
   document.getElementById("your-sum").innerText = yourSum;
   document.getElementById("dealer-sum").innerText = dealerSum;
@@ -444,6 +445,18 @@ function basicStrategy() {
       19: {
         2: "stand",
         3: "stand",
+        4: "double",
+        5: "double",
+        6: "double",
+        7: "stand",
+        8: "stand",
+        9: "stand",
+        10: "stand",
+        11: "stand",
+      },
+      19: {
+        2: "stand",
+        3: "stand",
         4: "wait",
         5: "wait",
         6: "wait",
@@ -576,53 +589,6 @@ function basicStrategy() {
   };
   let action = hard[yourSum][dealerSum];
   return action;
-
-  // var action = 2;
-  // // see if double down
-  // if (yourAceCount == 1) {
-  //   if (yourSum >= 13 && yourSum <= 16 && (dealerSum == 5 || dealerSum == 6)) {
-  //     action = "double";
-  //   }
-  //   if ((yourSum == 17 || yourSum == 18) && dealerSum < 7) {
-  //     action = "double";
-  //   }
-  // } else {
-  //   if (yourSum == 9 && dealerSum < 7) {
-  //     action = "double";
-  //   }
-  //   if (yourSum == 10 && dealerSum < 10) {
-  //     action = "double";
-  //   }
-  //   if (yourSum == 11) {
-  //     action = "double";
-  //   }
-  // }
-  // // hit or stand
-  // if (yourAceCount == 1) {
-  //   if (yourSum < 18) {
-  //     action = "hit";
-  //   }
-  //   if (yourSum > 18) {
-  //     action = "stand";
-  //   }
-  //   if (yourSum < 12) {
-  //     action = "hit";
-  //   }
-  // }
-  // if (dealerSum < 7) {
-  //   if (yourSum == 12 && (dealerSum == 2 || dealerSum == 3)) {
-  //     action = "hit";
-  //   } else {
-  //     action = "stand";
-  //   }
-  // } else {
-  //   if (yourSum < 17) {
-  //     action = "hit";
-  //   } else {
-  //     action = "stand";
-  //   }
-  // }
-  // return action;
 }
 
 function buttons1() {
